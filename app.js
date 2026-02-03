@@ -1,6 +1,9 @@
 import { auth, db } from "./firebase/firebase.js";
 import {
-  onAuthStateChanged
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut
 } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 import {
   collection,
@@ -9,17 +12,37 @@ import {
   getDocs
 } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
+const loginBox = document.getElementById("loginBox");
+const appDiv = document.getElementById("app");
 const authStatus = document.getElementById("authStatus");
 const charactersDiv = document.getElementById("characters");
 
+document.getElementById("loginBtn").onclick = async () => {
+  const email = email.value;
+  const password = password.value;
+  await signInWithEmailAndPassword(auth, email, password);
+};
+
+document.getElementById("registerBtn").onclick = async () => {
+  const email = email.value;
+  const password = password.value;
+  await createUserWithEmailAndPassword(auth, email, password);
+};
+
+document.getElementById("logoutBtn").onclick = () => {
+  signOut(auth);
+};
+
 onAuthStateChanged(auth, async user => {
   if (!user) {
-    authStatus.innerHTML = "Not logged in.";
-    charactersDiv.innerHTML = "Please log in.";
+    loginBox.style.display = "block";
+    appDiv.style.display = "none";
     return;
   }
 
-  authStatus.innerHTML = `Logged in as ${user.email}`;
+  loginBox.style.display = "none";
+  appDiv.style.display = "block";
+  authStatus.innerText = `Logged in as ${user.email}`;
 
   const q = query(
     collection(db, "characters"),
@@ -29,7 +52,7 @@ onAuthStateChanged(auth, async user => {
   const snap = await getDocs(q);
 
   if (snap.empty) {
-    charactersDiv.innerHTML = "No characters yet.";
+    charactersDiv.innerText = "No characters yet.";
     return;
   }
 
