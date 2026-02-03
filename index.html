@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Deeplight Character Creator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script src="js/data/races.js"></script>
+  <script src="js/data/classes.js"></script>
+  <script src="js/data/abilities.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <h1>Deeplight Character Creator</h1>
+
+    <!-- XP -->
+    <section>
+      <h2>Experience Points</h2>
+      <p>
+        Remaining XP:
+        <strong id="xpRemaining">15</strong>
+      </p>
+    </section>
+
+    <!-- RACE -->
+    <section>
+      <h2>Race</h2>
+      <select id="raceSelect">
+        <option value="">Select Race</option>
+      </select>
+      <div id="raceInfo" class="info"></div>
+    </section>
+
+    <!-- CLASS -->
+    <section>
+      <h2>Primary Class</h2>
+      <select id="classSelect">
+        <option value="">Select Class</option>
+      </select>
+      <div id="classInfo" class="info"></div>
+    </section>
+
+    <!-- ABILITIES -->
+    <section>
+      <h2>Abilities</h2>
+      <div id="abilitiesContainer"></div>
+    </section>
+
+    <!-- ERRORS -->
+    <section id="errors" class="errors"></section>
+
+    <!-- EXPORT -->
+    <section>
+      <button id="exportBtn">Export Character (JSON)</button>
+    </section>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
