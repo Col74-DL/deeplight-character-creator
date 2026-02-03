@@ -3,9 +3,9 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
 export const app = initializeApp({
-  apiKey: "YOUR_KEY",
-  authDomain: "YOUR_DOMAIN",
-  projectId: "YOUR_PROJECT_ID"
+  apiKey: "AIzaSyB4Cp5bqZXhS8W28o7-sFQtHH99hkhK25s",
+  authDomain: "deeplight-442b8.firebaseapp.com",
+  projectId: "deeplight-442b8"
 });
 
 export const auth = getAuth(app);
