@@ -1,3 +1,4 @@
+console.log("App JS loaded, Firebase auth:", auth);
 import { auth, db } from "./firebase/firebase.js";
 import {
   onAuthStateChanged,
