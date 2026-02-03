@@ -17,16 +17,23 @@ const appDiv = document.getElementById("app");
 const authStatus = document.getElementById("authStatus");
 const charactersDiv = document.getElementById("characters");
 
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+
 document.getElementById("loginBtn").onclick = async () => {
-  const email = email.value;
-  const password = password.value;
-  await signInWithEmailAndPassword(auth, email, password);
+  await signInWithEmailAndPassword(
+    auth,
+    emailInput.value,
+    passwordInput.value
+  );
 };
 
 document.getElementById("registerBtn").onclick = async () => {
-  const email = email.value;
-  const password = password.value;
-  await createUserWithEmailAndPassword(auth, email, password);
+  await createUserWithEmailAndPassword(
+    auth,
+    emailInput.value,
+    passwordInput.value
+  );
 };
 
 document.getElementById("logoutBtn").onclick = () => {
@@ -57,12 +64,4 @@ onAuthStateChanged(auth, async user => {
   }
 
   charactersDiv.innerHTML = snap.docs.map(doc => {
-    const c = doc.data();
-    return `
-      <div style="border:1px solid #ccc; padding:8px; margin-bottom:8px;">
-        <strong>${c.name || "Unnamed Character"}</strong><br />
-        Status: ${c.locked ? "Locked" : "Unlocked"}
-      </div>
-    `;
-  }).join("");
-});
+    const c = doc.data
