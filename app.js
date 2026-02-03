@@ -1,4 +1,3 @@
-console.log("App JS loaded, Firebase auth:", auth);
 import { auth, db } from "./firebase/firebase.js";
 import {
   onAuthStateChanged,
@@ -22,19 +21,25 @@ const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 
 document.getElementById("loginBtn").onclick = async () => {
-  await signInWithEmailAndPassword(
-    auth,
-    emailInput.value,
-    passwordInput.value
-  );
+  try {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    await signInWithEmailAndPassword(auth, email, password);
+  } catch (e) {
+    alert(e.message);
+  }
 };
 
 document.getElementById("registerBtn").onclick = async () => {
-  await createUserWithEmailAndPassword(
-    auth,
-    emailInput.value,
-    passwordInput.value
-  );
+  try {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    await createUserWithEmailAndPassword(auth, email, password);
+  } catch (e) {
+    alert(e.message);
+  }
 };
 
 document.getElementById("logoutBtn").onclick = () => {
