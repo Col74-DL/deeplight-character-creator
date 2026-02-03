@@ -10,12 +10,26 @@
 <body>
   <h1>Deeplight Player Dashboard</h1>
 
-  <div id="authStatus">Checking login…</div>
+  <div id="loginBox">
+    <h2>Login / Register</h2>
 
-  <hr />
+    <input type="email" id="email" placeholder="Email" /><br /><br />
+    <input type="password" id="password" placeholder="Password" /><br /><br />
 
-  <h2>Your Characters</h2>
-  <div id="characters">Loading…</div>
+    <button id="loginBtn">Login</button>
+    <button id="registerBtn">Register</button>
+  </div>
+
+  <div id="app" style="display:none;">
+    <div id="authStatus"></div>
+
+    <hr />
+
+    <h2>Your Characters</h2>
+    <div id="characters"></div>
+
+    <button id="logoutBtn">Logout</button>
+  </div>
 
   <script type="module" src="app.js"></script>
 </body>
