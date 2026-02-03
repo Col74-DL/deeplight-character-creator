@@ -64,4 +64,12 @@ onAuthStateChanged(auth, async user => {
   }
 
   charactersDiv.innerHTML = snap.docs.map(doc => {
-    const c = doc.data
+    const c = doc.data();
+    return `
+      <div style="border:1px solid #ccc; padding:8px; margin-bottom:8px;">
+        <strong>${c.name || "Unnamed Character"}</strong><br />
+        Status: ${c.locked ? "Locked" : "Unlocked"}
+      </div>
+    `;
+  }).join("");
+});
